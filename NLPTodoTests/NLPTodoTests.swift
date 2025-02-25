@@ -11,8 +11,8 @@ import Testing
 struct NLPTodoTests {
     
     @Test func testEditListItem() async throws {
-        var testableListItem = ListItem(title: "Laundry")
-        let expectedListItem = ListItem(title: "Homework", description: "quiz for my NLP class")
+        var testableListItem = TodoListItem(title: "Laundry")
+        let expectedListItem = TodoListItem(title: "Homework", description: "quiz for my NLP class")
         
         testableListItem.edit(title: "Homework", description: "quiz for my NLP class")
 
@@ -20,8 +20,8 @@ struct NLPTodoTests {
     }
     
     @Test func testAddListItem() async throws {
-        var expectedList: List = List(title: "Home", todos: [])
-        let newListItem = ListItem(title: "Laundry")
+        var expectedList: TodoList = TodoList(title: "Home", todos: [])
+        let newListItem = TodoListItem(title: "Laundry")
 
         expectedList.add(newListItem)
     
@@ -29,8 +29,8 @@ struct NLPTodoTests {
     }
     
     @Test func testUpdateStatus() async throws {
-        var expectedList: List = List(title: "Home", todos: [
-            ListItem(title: "Laundry")
+        var expectedList: TodoList = TodoList(title: "Home", todos: [
+            TodoListItem(title: "Laundry")
         ])
         
         expectedList.updateStatus(item: &expectedList.todos[0], newStatus: .inProgress)
@@ -39,8 +39,8 @@ struct NLPTodoTests {
     }
     
     @Test func testRemoveListItem() async throws {
-        var expectedList: List = List(title: "Home", todos: [
-            ListItem(title: "Laundry")
+        var expectedList: TodoList = TodoList(title: "Home", todos: [
+            TodoListItem(title: "Laundry")
         ])
 
         expectedList.remove(0)

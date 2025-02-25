@@ -12,24 +12,24 @@ import Foundation
 // send notifications
 // date and time deadlines
 
-public enum ListItemStatus: Equatable {
+public enum TodoListItemStatus: Equatable {
     case notStarted, inProgress, completed
 }
 
-public struct List {
+public struct TodoList {
     public var title: String?
-    public var todos: [ListItem]
+    public var todos: [TodoListItem]
     
-    public init(title: String, todos: [ListItem]) {
+    public init(title: String, todos: [TodoListItem]) {
         self.title = title
         self.todos = todos
     }
     
-    public mutating func add(_ newItem: ListItem) {
+    public mutating func add(_ newItem: TodoListItem) {
         todos.append(newItem)
     }
     
-    public func updateStatus(item: inout ListItem, newStatus: ListItemStatus) {
+    public func updateStatus(item: inout TodoListItem, newStatus: TodoListItemStatus) {
         item.status = newStatus
     }
     
@@ -38,12 +38,12 @@ public struct List {
     }
 }
 
-public struct ListItem: Equatable {
+public struct TodoListItem: Equatable {
     public var title: String
     public var description: String?
     public var startDate: Date?
     public var endDate: Date?
-    public var status: ListItemStatus
+    public var status: TodoListItemStatus
     
     public init(title: String, description: String? = nil, startDate: Date? = nil, endDate: Date? = nil) {
         self.title = title
@@ -53,7 +53,7 @@ public struct ListItem: Equatable {
         self.status = .notStarted
     }
     
-    public mutating func edit(title: String? = nil, description: String? = nil, startDate: Date? = nil, endDate: Date? = nil, status: ListItemStatus? = nil) {
+    public mutating func edit(title: String? = nil, description: String? = nil, startDate: Date? = nil, endDate: Date? = nil, status: TodoListItemStatus? = nil) {
         self.title = title ?? self.title
         self.description = description ?? self.description
         self.startDate = startDate ?? self.startDate
